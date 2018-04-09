@@ -52,7 +52,7 @@ import pip
 # Sanity check that vendoring logic worked
 assert setuptools.__version__ == '38.5.1'
 assert wheel.__version__ == '0.30.0'
-assert pip.__version__ == '9.0.1'
+assert pip.__version__ == '9.0.3'
 
 # Invoke tool
 import whl
