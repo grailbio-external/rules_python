@@ -14,7 +14,7 @@
 
 workspace(name = "rules_python")
 
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive", "http_file")
 http_archive(
     name = "bazel_federation",
     url = "https://github.com/bazelbuild/bazel-federation/archive/4da9b5f83ffae17613fa025a0701fa9db9350d41.zip",
@@ -34,3 +34,13 @@ rules_python_internal_deps()
 
 load("//:internal_setup.bzl", "rules_python_internal_setup")
 rules_python_internal_setup()
+
+http_file(
+    name = "wheel_0_31_1_whl",
+    sha256 = "80044e51ec5bbf6c894ba0bc48d26a8c20a9ba629f4ca19ea26ecfcf87685f5f",
+    # From https://pypi.org/project/wheel/
+    urls = [("https://files.pythonhosted.org/packages/81/30/" +
+           "e935244ca6165187ae8be876b6316ae201b71485538ffac1d718843025a9/" +
+           "wheel-0.31.1-py2.py3-none-any.whl")],
+    downloaded_file_path = "wheel-0.31.1-py2.py3-none-any.whl"
+)
