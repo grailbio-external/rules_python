@@ -50,9 +50,9 @@ import wheel
 import pip
 
 # Sanity check that vendoring logic worked
-assert setuptools.__version__ == '38.5.1'
-assert wheel.__version__ == '0.30.0'
-assert pip.__version__ == '9.0.3'
+assert setuptools.__version__ == '38.5.1', (setuptools, setuptools.__version__)
+assert wheel.__version__ == '0.30.0', (wheel, wheel.__version__)
+assert pip.__version__ == '9.0.3', (pip, pip.__version__)
 
 # Invoke tool
 import whl
