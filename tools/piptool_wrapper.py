@@ -37,10 +37,6 @@ if 'sitecustomize' in sys.modules:
             contents = f.read()
             print("%s\n" % contents)
 
-assert 'setuptools' not in sys.modules, (sys.modules)
-assert 'wheel' not in sys.modules, (sys.modules)
-assert 'pip' not in sys.modules, (sys.modules)
-
 # Add our first-party source, and vendored third_party packages, to
 # the start of sys.path, so that we win any collision with already
 # installed modules.
@@ -58,18 +54,20 @@ sys.path[0:0] = [
     os.path.join(_root_dir, 'rules_python'),
     ]
 
-print("sys.path is %s" % str(sys.path))
-
 # Safe to import
+print("sys.path is %s" % str(sys.path))
+assert 'setuptools' not in sys.modules, (sys.modules)
 import setuptools
 import pkg_resources
+assert setuptools.__version__ == '38.5.1', (setuptools, setuptools.__version__)
+assert 'wheel' not in sys.modules, (sys.modules)
 import wheel
+assert wheel.__version__ == '0.30.0', (wheel, wheel.__version__)
+assert 'pip' not in sys.modules, (sys.modules)
 import pip
+assert pip.__version__ == '9.0.3', (pip, pip.__version__)
 
 # Sanity check that vendoring logic worked
-assert setuptools.__version__ == '38.5.1', (setuptools, setuptools.__version__)
-assert wheel.__version__ == '0.30.0', (wheel, wheel.__version__)
-assert pip.__version__ == '9.0.3', (pip, pip.__version__)
 
 # Invoke tool
 import piptool
