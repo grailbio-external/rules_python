@@ -23,13 +23,13 @@ exports_files([
     "whltool_wrapper.py",
 ])
 
-py_test(
-    name = "par_test",
-    srcs = ["par_test.py"],
-    data = [
-        ":piptool.par",
-        ":whltool.par",
-        "//rules_python:piptool.par",
-        "//rules_python:whltool.par",
-    ],
-)
+#py_test(
+#    name = "par_test",
+#    srcs = ["par_test.py"],
+#    data = [
+#        ":piptool.par",
+#        ":whltool.par",
+#        "//rules_python:piptool.par",
+#        "//rules_python:whltool.par",
+#    ],
+#)
