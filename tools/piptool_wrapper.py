@@ -1,4 +1,4 @@
-#!/usr/bin/env python -vv
+#!/usr/bin/env python
 
 # Copyright 2018 The Bazel Authors. All rights reserved.
 #
@@ -55,7 +55,12 @@ sys.path[0:0] = [
     ]
 
 # Safe to import
-print("sys.path is %s" % str(sys.path))
+import pprint
+print("sys.modules")
+pprint.pprint(sys.modules)
+print("sys.path")
+pprint.pprint(sys.path)
+os.system("ls -lR %s" % os.path.dirname(os.path.dirname(__file__)))
 assert 'setuptools' not in sys.modules, (sys.modules)
 import setuptools
 import pkg_resources
@@ -66,8 +71,6 @@ assert wheel.__version__ == '0.30.0', (wheel, wheel.__version__)
 assert 'pip' not in sys.modules, (sys.modules)
 import pip
 assert pip.__version__ == '9.0.3', (pip, pip.__version__)
-
-# Sanity check that vendoring logic worked
 
 # Invoke tool
 import piptool
