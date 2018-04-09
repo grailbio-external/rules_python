@@ -26,6 +26,21 @@ It must work with arbitrary other packages on the Python import path.
 import os
 import sys
 
+if 'sitecustomize' in sys.modules:
+    import sitecustomize
+    sys.stdout.write("%s\n" % sitecustomize.__file__)
+    fn = sitecustomize.__file__
+    if fn.endswith('.pyc'):
+        fn = fn[:-1]
+    if fn.endswith('.py'):
+        with open(fn, 'rb') as f:
+            contents = f.read()
+            sys.stdout.write("%s\n" % contents)
+
+assert 'setuptools' not in sys.modules, (sys.modules)
+assert 'wheel' not in sys.modules
+assert 'pip' not in sys.modules
+
 # Add our first-party source, and vendored third_party packages, to
 # the start of sys.path, so that we win any collision with already
 # installed modules.
