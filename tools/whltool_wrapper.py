@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python -vv
 
 # Copyright 2018 The Bazel Authors. All rights reserved.
 #
